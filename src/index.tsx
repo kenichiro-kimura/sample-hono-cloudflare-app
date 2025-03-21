@@ -1,12 +1,17 @@
 import { Hono } from 'hono'
 import { renderer } from './renderer'
 
-const app = new Hono<{ Bindings: CloudflareBindings }>();
+type SecretBindings = {
+  LINE_CHANNEL_ACCESS_TOKEN: string;
+};
+
+const app = new Hono<{ Bindings: SecretBindings }>();
 
 app.use(renderer)
 
 app.get('/', (c) => {
-  return c.render(<h1>Hello!</h1>)
+  const LINE_CHANNEL_ACCESS_TOKEN = c.env.LINE_CHANNEL_ACCESS_TOKEN;
+  return c.render(<h1>Hello!{LINE_CHANNEL_ACCESS_TOKEN}</h1>)
 })
 
 class User {
