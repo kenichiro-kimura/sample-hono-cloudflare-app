@@ -5,7 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "sample-hono-cloudflare-app",
-	"main": "src/index.ts",
+	//"main": "src/index.ts",
 	"compatibility_date": "2025-03-20",
 	"pages_build_output_dir": "./dist",
 	"observability": {
